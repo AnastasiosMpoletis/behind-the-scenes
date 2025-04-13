@@ -1,4 +1,4 @@
-import { useState, memo, useCallback, useMemo } from 'react';
+import { useState, memo, useCallback, useMemo, useEffect } from 'react';
 
 import IconButton from '../UI/IconButton.jsx';
 import MinusIcon from '../UI/Icons/MinusIcon.jsx';
@@ -49,11 +49,19 @@ const Counter = memo(function Counter({ initialCount }) {
    * Using key={index} ({@link CounterHistory}) is not recommended. 
    * It is better to use a unique key for every element in order to bind the functionality to the same element, 
    *   not the element that happens to be placed in the same position.
+   * Unique key is also better for performance, since any change doesn't update the whole list, but only the necessary elements.
    */
   const [counterChanges, setCounterChanges] = useState([{
     id: Math.random() * 1000,
     value: initialCount
   }]);
+
+  // useEffect(() => {
+  //   setCounterChanges({
+  //     id: Math.random() * 1000,
+  //     value: initialCount
+  //   });
+  // }, [initialCount]);
 
   const currentCounter = counterChanges.reduce(
     (prevCounter, counterChange) => prevCounter + counterChange.value,

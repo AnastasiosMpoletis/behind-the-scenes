@@ -19,7 +19,11 @@ function App() {
       <Header />
       <main>
         <ConfigureCounter onSet={handleSetCount} />
-        <Counter initialCount={chosenCount} />
+        {/**
+         * In our case, key is a perfect practise to use when we set a new chosenCount and we want a new Counter component to be created.
+         * Could be done with {@link Counter} useEffect that is commented out, but key is much better.
+         */}
+        <Counter key={chosenCount} initialCount={chosenCount} />
       </main>
     </>
   );
