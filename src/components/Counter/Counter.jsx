@@ -30,7 +30,9 @@ function isPrime(number) {
 /**
  * memo prevents external changes if no props are changed.
  * We should use it as high up as possible and not in every tree leaf.
- * Furthermore, memo checks props and this costs if done in a lot of components or for function that change props frequently.
+ * Furthermore, memo checks props and this costs if done in a lot of components or for functions that change props frequently.
+ * 
+ * AFTER CREATING ConfigureCounter, MEMO IS USELESS HERE. We keep it just for reference.
  */
 const Counter = memo(function Counter({ initialCount }) {
   log('<Counter /> rendered', 1);
